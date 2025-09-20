@@ -18,7 +18,7 @@ pub fn main() {
     let mut bytes1: Vec<u8> = Vec::new();
     let mut n: i32 = 0;
     for byte in bytes {
-        if byte != 255 {bytes1.push(byte)}
+        if byte > 15 {bytes1.push(byte)}
         else {bytes1.push(1); n += 1;}
     }
 
@@ -30,6 +30,6 @@ pub fn main() {
 
     let mut encoder = GzEncoder::new(output, Compression::default());
     encoder.write_all(&bytes1).unwrap();
-    println!{"Patched out {} 255 bytes", n};
+    println!{"Patched out {} bytes greater than 15", n};
 
 }
